@@ -17,5 +17,14 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::middleware('api')->get('/article', 'ArticleController@index');
-Route::middleware('api')->get('/user', 'UserController@index');
+Route::middleware('api')->get('/articles', 'ArticleController@index');
+Route::middleware('api')->post('/articles', 'ArticleController@store');
+Route::middleware('api')->get('/articles/{id}', 'ArticleController@show');
+Route::middleware('api')->put('/articles/{id}', 'ArticleController@update');
+Route::middleware('api')->delete('/articles/{id}', 'ArticleController@destroy');
+
+Route::middleware('api')->get('/users', 'UserController@index');
+Route::middleware('api')->post('/users', 'UserController@store');
+Route::middleware('api')->get('/users/{id}', 'UserController@show');
+Route::middleware('api')->put('/users/{id}', 'UserController@update');
+Route::middleware('api')->delete('/users/{id}', 'UserController@destroy');

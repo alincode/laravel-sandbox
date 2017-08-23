@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\User;
 
 class ArticleController extends Controller
 {
@@ -35,7 +36,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article;
+        $article -> title = $request -> title;
+        $article -> description = $request -> description;
+        $article -> user = 1; 
+        $article -> save();
+        return $article;
     }
 
     /**
@@ -46,7 +52,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        return Article::findOrFail($id);
     }
 
     /**
@@ -69,7 +75,11 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->title = $request->input('title');
+        $article->description = $request->input('description');
+        $article->save();
+        return $article;
     }
 
     /**
@@ -80,6 +90,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+        return $article;
     }
 }
