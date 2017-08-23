@@ -12,12 +12,19 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('articles')->insert([
+         DB::table('articles')->insert([[
             'title' => 'title ok',
             'description' => 'description ok',
             'user_id' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ]);
+        ],[
+            'title' => 'title ok 2',
+            'description' => 'description ok 2',
+            'user_id' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]]);
+        
     }
 }
