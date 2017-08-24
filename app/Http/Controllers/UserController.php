@@ -17,6 +17,16 @@ class UserController extends Controller
         return User::all();
     }
 
+    public function withTrashed()
+    {
+        return User::withTrashed()->get();
+    }
+
+    public function onlyTrashed()
+    {
+        return User::onlyTrashed()->get();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
