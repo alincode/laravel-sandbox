@@ -21,6 +21,7 @@ Route::middleware('api')->get('/articles', 'ArticleController@index');
 Route::middleware('api')->post('/articles', 'ArticleController@store');
 Route::middleware('api')->get('/articles/{id}', 'ArticleController@show');
 Route::middleware('api')->put('/articles/{id}', 'ArticleController@update');
+Route::middleware('api')->put('/articles/{id}/users/{userId}', 'ArticleController@updateUser');
 Route::middleware('api')->delete('/articles/{id}', 'ArticleController@destroy');
 
 Route::middleware('api')->get('/users', 'UserController@index');

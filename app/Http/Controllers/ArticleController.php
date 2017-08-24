@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Article;
 use App\User;
 
@@ -78,6 +79,16 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article->title = $request->input('title');
         $article->description = $request->input('description');
+        $article->save();
+        return $article;
+    }
+
+    public function updateUser(Request $request, $id, $userId)
+    {
+        $article = Article::find($id);
+        $user = User::find($request['user']);
+        $user = User::find($userId);
+        $article = $article->user()->associate($user);
         $article->save();
         return $article;
     }
