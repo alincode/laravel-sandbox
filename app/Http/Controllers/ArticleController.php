@@ -40,7 +40,8 @@ class ArticleController extends Controller
         $article = new Article;
         $article -> title = $request -> title;
         $article -> description = $request -> description;
-        $article -> user = 1; 
+        $user = User::find($request -> user);
+        $article = $article->user()->associate($user);
         $article -> save();
         return $article;
     }
