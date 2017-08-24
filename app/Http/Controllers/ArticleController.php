@@ -86,7 +86,7 @@ class ArticleController extends Controller
     public function updateUser(Request $request, $id, $userId)
     {
         $article = Article::find($id);
-        $user = User::find($request['user']);
+        // $user = User::find($request['user']);
         $user = User::find($userId);
         $article = $article->user()->associate($user);
         $article->save();
